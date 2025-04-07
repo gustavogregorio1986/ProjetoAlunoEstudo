@@ -17,5 +17,7 @@ namespace ProjetoAluno.Dominio.Dominio
         public double Nota2 { get; set; }
 
         public double TotalNota { get; set; }
+
+        public string? Situacao { get; set; }
     }
 }
