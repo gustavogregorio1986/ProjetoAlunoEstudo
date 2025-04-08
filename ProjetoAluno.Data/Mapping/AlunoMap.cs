@@ -32,6 +32,18 @@ namespace ProjetoAluno.Data.Mapping
             builder.Property(x => x.TotalNota)
                 .IsRequired()
                 .HasColumnType("DOUBLE(11,2)");
+
+            builder.Property(x => x.DataInicio)
+               .IsRequired()
+               .HasColumnType("DATETIME");
+
+            builder.Property(x => x.DataTermino)
+               .IsRequired()
+               .HasColumnType("DATETIME");
+
+            builder.Property(x => x.Escolareidade)
+               .IsRequired()
+               .HasColumnType("VARCHAR(70)");
         }
     }
 }

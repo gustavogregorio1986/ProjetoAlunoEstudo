@@ -19,5 +19,11 @@ namespace ProjetoAluno.Dominio.Dominio
         public double TotalNota { get; set; }
 
         public string? Situacao { get; set; }
+
+        public DateTime DataInicio { get; set; }
+
+        public DateTime DataTermino { get; set; }
+
+        public string? Escolareidade { get; set; }
     }
 }
