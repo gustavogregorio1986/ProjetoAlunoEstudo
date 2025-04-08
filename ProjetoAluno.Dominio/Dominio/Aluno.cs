@@ -25,5 +25,7 @@ namespace ProjetoAluno.Dominio.Dominio
         public DateTime DataTermino { get; set; }
 
         public string? Escolareidade { get; set; }
+
+        public string? Status { get; set; }
     }
 }
