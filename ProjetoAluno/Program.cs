@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using ProjetoAluno.Data.Context;
+using ProjetoAluno.Data.Repository;
+using ProjetoAluno.Data.Repository.Interface;
+using ProjetoAluno.Service.Service;
+using ProjetoAluno.Service.Service.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DbContexto>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
+builder.Services.AddScoped<IAlunoService, AlunoService>();
 
 var app = builder.Build();
 
