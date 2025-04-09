@@ -12,8 +12,8 @@ using ProjetoAluno.Data.Context;
 namespace ProjetoAluno.Data.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20250408150516_addDataEscolariedade")]
-    partial class addDataEscolariedade
+    [Migration("20250409181743_Criar")]
+    partial class Criar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,7 +36,7 @@ namespace ProjetoAluno.Data.Migrations
                     b.Property<DateTime>("DataTermino")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Escolareidade")
+                    b.Property<string>("Escolaridade")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeAluno")
@@ -49,6 +49,9 @@ namespace ProjetoAluno.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Situacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("TotalNota")

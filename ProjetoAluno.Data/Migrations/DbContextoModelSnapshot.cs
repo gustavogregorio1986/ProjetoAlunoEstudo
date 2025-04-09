@@ -34,7 +34,7 @@ namespace ProjetoAluno.Data.Migrations
                     b.Property<DateTime>("DataTermino")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Escolareidade")
+                    b.Property<string>("Escolaridade")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeAluno")

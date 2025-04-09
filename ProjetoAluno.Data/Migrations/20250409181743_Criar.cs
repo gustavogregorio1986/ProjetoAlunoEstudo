@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoAluno.Data.Migrations
 {
-    public partial class CriarTabelas : Migration
+    public partial class Criar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,12 @@ namespace ProjetoAluno.Data.Migrations
                     NomeAluno = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nota1 = table.Column<double>(type: "float", nullable: false),
                     Nota2 = table.Column<double>(type: "float", nullable: false),
-                    TotalNota = table.Column<double>(type: "float", nullable: false)
+                    TotalNota = table.Column<double>(type: "float", nullable: false),
+                    Situacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DataInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataTermino = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Escolaridade = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

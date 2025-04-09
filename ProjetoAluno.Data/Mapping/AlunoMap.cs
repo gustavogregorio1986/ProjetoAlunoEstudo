@@ -41,7 +41,7 @@ namespace ProjetoAluno.Data.Mapping
                .IsRequired()
                .HasColumnType("DATETIME");
 
-            builder.Property(x => x.Escolareidade)
+            builder.Property(x => x.Escolaridade)
                .IsRequired()
                .HasColumnType("VARCHAR(70)");
         }

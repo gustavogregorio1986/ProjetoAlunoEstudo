@@ -4,7 +4,7 @@
 
 namespace ProjetoAluno.Data.Migrations
 {
-    public partial class addCampos : Migration
+    public partial class CriarAlunos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
