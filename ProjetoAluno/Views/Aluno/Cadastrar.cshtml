@@ -4,53 +4,79 @@
     ViewData["Title"] = "Cadastrar Aluno";
 }
 
-<form asp-action="SalvarAluno" method="post">
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["MensagemSucesso"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<partial name="_ValidationScriptsPartial" />
+
+<form asp-action="Cadastrar" method="post">
     <div class="form-group">
         <label asp-for="NomeAluno"></label>
         <input asp-for="NomeAluno" class="form-control" />
+        <span asp-validation-for="NomeAluno" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Nota1"></label>
         <input asp-for="Nota1" class="form-control" step="0.01" type="number" step="0.01" oninput="calcularTotal()" />
+        <span asp-validation-for="Nota1" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Nota2"></label>
         <input asp-for="Nota2" class="form-control" step="0.01" type="number" step="0.01" oninput="calcularTotal()" />
+        <span asp-validation-for="Nota2" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="TotalNota"></label>
         <input asp-for="TotalNota" class="form-control" readonly />
+        <span asp-validation-for="TotalNota" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Situacao"></label>
         <input asp-for="Situacao" class="form-control" readonly id="Situacao" />
+        <span asp-validation-for="Situacao" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DataInicio"></label>
         <input asp-for="DataInicio" class="form-control" type="date" />
+        <span asp-validation-for="DataInicio" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DataTermino"></label>
         <input asp-for="DataTermino" class="form-control" type="date" />
+        <span asp-validation-for="DataTermino" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Escolaridade"></label>
         <input asp-for="Escolaridade" class="form-control" />
+        <span asp-validation-for="Escolaridade" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Status"></label>
-        <input asp-for="Status" class="form-control" />
+        <label asp-for="Status" class="control-label"></label>
+        <select asp-for="Status" class="form-control" asp-items="@(new SelectList(new[] {
+        new { Value = "0", Text = "Inativo" },
+        new { Value = "1", Text = "Ativo" }
+    }, "Value", "Text"))">
+            <option value="">Selecione</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
     </div>
-
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <hr/>
+    <div class="text-end mt-4 mb-5">
+        <button type="submit" class="btn btn-primary">Salvar Aluno</button>
+    </div>
 </form>
 
 @section Scripts{
