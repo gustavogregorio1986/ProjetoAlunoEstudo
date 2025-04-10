@@ -13,7 +13,10 @@
 
 @if(Model.Alunos.Any())
 {
- <table class="table">
+ <div class="mb-3">
+        <input type="text" id="buscaTabela" class="form-control" placeholder="Buscar...">
+ </div>
+    <table class="table" id="tabelaAlunos">
     <thead class="thead-light">
         <tr>
             <th scope="col">Nome do Aluno</th>
@@ -108,6 +111,20 @@
 
         </ul>
     </nav>
+    @section Scripts {
+    <script>
+        document.getElementById("buscaTabela").addEventListener("keyup", function () {
+            const termo = this.value.toLowerCase();
+            const linhas = document.querySelectorAll("#tabelaAlunos tbody tr");
+
+            linhas.forEach(linha => {
+                const textoLinha = linha.innerText.toLowerCase();
+                linha.style.display = textoLinha.includes(termo) ? "" : "none";
+            });
+        });
+    </script>
+
+    }
     
 }
 else
