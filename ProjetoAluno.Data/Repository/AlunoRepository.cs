@@ -34,5 +34,30 @@ namespace ProjetoAluno.Data.Repository
                    .Take(totalItens)
                    .ToList();
         }
+
+        public List<Aluno> ListarAtivos(int paginaAtual, int itensPorPagina, int ativo, out int totalItens)
+        {
+            var query = _db.Alunos.Where(a => a.Status == 1); // ← agora usa o parâmetro
+
+            totalItens = query.Count();
+
+            return query
+                .OrderBy(a => a.Id)
+                .Skip((paginaAtual - 1) * itensPorPagina)
+                .Take(itensPorPagina)
+                .ToList();
+        }
+
+        public List<Aluno> ListarInativos(int paginaAtual, int itensPorPagina, int inativo, out int totalItens)
+        {
+            var query = _db.Alunos.Where(a => a.Status == 0);
+            totalItens = query.Count();
+
+            return query
+                .OrderBy(a => a.Id)
+                .Skip((paginaAtual - 1) * itensPorPagina)
+                .Take(itensPorPagina)
+                .ToList();
+        }
     }
 }

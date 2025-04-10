@@ -69,15 +69,46 @@ namespace ProjetoAluno.Controllers
             return View(viewModel);
         }
 
-
-        public IActionResult ListarAtivos()
+        [HttpGet]
+        public IActionResult ListarAtivos(int paginaAtual = 1, int itensPorPagina = 5)
         {
-            return View();
+            var alunos = _alunoService.ListarAtivos(paginaAtual, itensPorPagina, ativo: 1, out int total);
+
+            var totalPaginas = (int)Math.Ceiling((double)total / itensPorPagina);
+
+            if (paginaAtual > totalPaginas && totalPaginas > 0)
+                return RedirectToAction("ListarAtivos", new { paginaAtual = totalPaginas, itensPorPagina });
+
+            var viewModel = new IndexView
+            {
+                Alunos = alunos,
+                TotalItens = total,
+                PaginaAtual = paginaAtual,
+                ItensPorPagina = itensPorPagina
+            };
+
+            return View(viewModel);
         }
 
-        public IActionResult ListarInativos()
+        [HttpGet]
+        public IActionResult ListarInativos(int paginaAtual = 1, int itensPorPagina = 5)
         {
-            return View();
+            var alunos = _alunoService.ListarInativos(paginaAtual, itensPorPagina, inativo:0, out int total);
+
+            var totalPaginas = (int)Math.Ceiling((double)total / itensPorPagina);
+
+            if (paginaAtual > totalPaginas && totalPaginas > 0)
+                return RedirectToAction("ListarInativos", new { paginaAtual = totalPaginas, itensPorPagina });
+
+            var viewModel = new IndexView
+            {
+                Alunos = alunos,
+                TotalItens = total,
+                PaginaAtual = paginaAtual,
+                ItensPorPagina = itensPorPagina
+            };
+
+            return View(viewModel);
         }
     }
 }

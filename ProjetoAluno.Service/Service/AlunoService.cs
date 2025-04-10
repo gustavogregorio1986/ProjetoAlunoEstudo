@@ -25,7 +25,18 @@ namespace ProjetoAluno.Service.Service
 
         public List<Aluno> ListarAlunos(int paginaAtual, int itensPorPagina, out int totalItens)
         {
-          return  _alunoRepository.ListarAlunos(paginaAtual, itensPorPagina, out totalItens);
+          return _alunoRepository.ListarAlunos(paginaAtual, itensPorPagina, out totalItens);
+        }
+
+
+        public List<Aluno> ListarAtivos(int paginaAtual, int itensPorPagina, int ativo, out int totalItens)
+        {
+            return _alunoRepository.ListarAtivos(paginaAtual, itensPorPagina, ativo, out totalItens);
+        }
+
+        public List<Aluno> ListarInativos(int paginaAtual, int itensPorPagina, int inativo, out int totalItens)
+        {
+            return _alunoRepository.ListarInativos(paginaAtual, itensPorPagina, inativo, out totalItens);
         }
     }
 }
