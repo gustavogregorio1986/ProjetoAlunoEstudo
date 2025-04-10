@@ -35,6 +35,6 @@ namespace ProjetoAluno.Models
         public string? Escolaridade { get; set; }
 
         [Required(ErrorMessage = "Informe o status do Aluno")]
-        public string? Status { get; set; }
+        public int Status { get; set; }
     }
 }

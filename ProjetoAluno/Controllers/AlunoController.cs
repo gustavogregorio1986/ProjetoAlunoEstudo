@@ -53,11 +53,22 @@ namespace ProjetoAluno.Controllers
             return View(model); // volta com os dados preenchidos
         }
 
-
-        public IActionResult Consultar()
+        [HttpGet]
+        public IActionResult Consultar(int paginaAtual = 1, int itensPorPagina = 5)
         {
-            return View();
+            var alunos = _alunoService.ListarAlunos(paginaAtual, itensPorPagina, out int total);
+
+            var viewModel = new IndexView
+            {
+                Alunos = alunos,
+                TotalItens = total,
+                PaginaAtual = paginaAtual,
+                ItensPorPagina = itensPorPagina
+            };
+
+            return View(viewModel);
         }
+
 
         public IActionResult ListarAtivos()
         {

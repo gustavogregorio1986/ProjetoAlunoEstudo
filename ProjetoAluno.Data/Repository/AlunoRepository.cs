@@ -23,5 +23,16 @@ namespace ProjetoAluno.Data.Repository
             _db.Add(aluno);
             _db.SaveChanges();
         }
+
+        public List<Aluno> ListarAlunos(int paginaAtual, int itensPorPagina, out int totalItens)
+        {
+            totalItens = _db.Alunos.Count();
+
+            return _db.Alunos
+                   .OrderBy(a => a.Id)
+                   .Skip((paginaAtual - 1) * itensPorPagina)
+                   .Take(totalItens)
+                   .ToList();
+        }
     }
 }

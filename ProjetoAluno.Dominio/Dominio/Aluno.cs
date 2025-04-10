@@ -26,6 +26,6 @@ namespace ProjetoAluno.Dominio.Dominio
 
         public string? Escolaridade { get; set; }
 
-        public string? Status { get; set; }
+        public int? Status { get; set; }
     }
 }

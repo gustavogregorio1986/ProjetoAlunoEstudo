@@ -22,5 +22,10 @@ namespace ProjetoAluno.Service.Service
         {
             _alunoRepository.Adicionar(aluno);
         }
+
+        public List<Aluno> ListarAlunos(int paginaAtual, int itensPorPagina, out int totalItens)
+        {
+          return  _alunoRepository.ListarAlunos(paginaAtual, itensPorPagina, out totalItens);
+        }
     }
 }
